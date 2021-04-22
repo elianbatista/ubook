@@ -1,0 +1,64 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+}
+
+.logo {
+  width: 148px;
+  margin-right: 80px;
+}
+
+.nav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.search {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background-color: #e4e7f4;
+  padding: 7px 8px 6px;
+  border-radius: 4px;
+}
+
+.field_search {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  color: #9198af;
+}
+
+.field_search::placeholder {
+  color: #9198af;
+}
+
+.button_criar_contato {
+  display: flex;
+  align-items: center;
+  background-color: #dbff90;
+  padding: 8px 22px 8px 16px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+  margin-right: 30px;
+  transition: filter 0.2s;
+}
+
+.button_criar_contato:hover {
+  filter: brightness(1.05);
+}
+
+.button_criar_contato img {
+  width: 16px;
+  margin-right: 8px;
+}
+
+.button_criar_contato span {
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: #fa7268;
+}
