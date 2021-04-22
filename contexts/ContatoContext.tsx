@@ -25,13 +25,12 @@ interface ContatoProviderProps {
 export const ContatoContext = createContext({} as ContatoContextData)
 
 export function ContatoProvider({ children }: ContatoProviderProps) {
-  const { handleIsPopUpActive, handlePopUpType } = useContext(PopUpContext)
+  const { handlePopUpType } = useContext(PopUpContext)
   const [deleteId, setDeleteId] = useState('')
   const [contatos, setContatos] = useState([])
 
   const handleDeleteContato = (id: string) => {
     setDeleteId(id)
-    handleIsPopUpActive(true)
     handlePopUpType('ExcluirContato')
   }
 
@@ -39,7 +38,6 @@ export function ContatoProvider({ children }: ContatoProviderProps) {
     const newContatos = DeleteContato(deleteId)
     setContatos(newContatos)
     setDeleteId('')
-    handleIsPopUpActive(false)
     handlePopUpType('')
   }
 
