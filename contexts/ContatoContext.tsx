@@ -5,7 +5,8 @@ import React, {
   useState,
   useEffect
 } from "react";
-import { ContatoModel } from "../models/contato";
+import { Contato, ContatoModel } from "../models/contato";
+import { AddContato } from "../services/AddContato";
 import { DeleteContato } from "../services/DeleteContato";
 import { ListContato } from "../services/ListContato";
 import { PopUpContext } from "./PopUpContext";
@@ -16,6 +17,7 @@ interface ContatoContextData {
   handleConfirmDelete: () => void
   handleUpdateContato: (id: string) => void
   handleConfirmUpdate: (contato: ContatoModel) => void
+  handleCriarContato: (contato: Contato) => void
 }
 
 interface ContatoProviderProps {
@@ -28,6 +30,12 @@ export function ContatoProvider({ children }: ContatoProviderProps) {
   const { handlePopUpType } = useContext(PopUpContext)
   const [deleteId, setDeleteId] = useState('')
   const [contatos, setContatos] = useState([])
+
+  const handleCriarContato = (contato: Contato) => {
+    const newContatos = AddContato(contato)
+    setContatos(newContatos)
+    handlePopUpType('')
+  }
 
   const handleDeleteContato = (id: string) => {
     setDeleteId(id)
@@ -61,7 +69,8 @@ export function ContatoProvider({ children }: ContatoProviderProps) {
         handleDeleteContato,
         handleConfirmDelete,
         handleUpdateContato,
-        handleConfirmUpdate
+        handleConfirmUpdate,
+        handleCriarContato
       }}
     >
       { children }

@@ -1,10 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react'
+import { ContatoContext } from '../contexts/ContatoContext'
 import { PopUpContext } from '../contexts/PopUpContext'
 import { AddContato } from '../services/AddContato'
 import styles from '../styles/components/NovoContato.module.css'
 
 const ExcluirContato = () => {
   const { handlePopUpType } = useContext(PopUpContext)
+  const { handleCriarContato } = useContext(ContatoContext)
 
   const [nome, setNome] = useState('')
   const [email, setEmail] = useState('')
@@ -16,8 +18,11 @@ const ExcluirContato = () => {
   }
 
   const handleSubmit = () => {
-    const contato = AddContato({ nome, email, telefone })
-    console.log(contato)
+    handleCriarContato({
+      nome,
+      email,
+      telefone
+    })
   }
 
   useEffect(() => {
