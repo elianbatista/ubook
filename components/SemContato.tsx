@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { PopUpContext } from '../contexts/PopupContext'
 import styles from '../styles/components/SemContato.module.css'
 
 const SemContato = () => {
+  const { handleIsPopUpActive, handlePopUpType } = useContext(PopUpContext)
+
+  const handleCriarContato = () => {
+    handleIsPopUpActive(true)
+    handlePopUpType('NovoContato')
+  }
+  
   return (
     <div className={styles.container}>
       <img src="/img/icons/book.svg" />
@@ -10,7 +18,7 @@ const SemContato = () => {
       </p>
       <button className={styles.button_criar_contato}>
           <img src="/img/icons/plus.svg" />
-          <span>
+          <span onClick={handleCriarContato}>
             Criar contato
           </span>
         </button>

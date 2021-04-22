@@ -45,11 +45,6 @@
   border-radius: 20px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
   margin-right: 30px;
-  transition: filter 0.2s;
-}
-
-.button_criar_contato:hover {
-  filter: brightness(1.05);
 }
 
 .button_criar_contato > img {

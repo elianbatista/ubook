@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { PopUpContext } from '../contexts/PopupContext'
 import styles from '../styles/components/NovoContato.module.css'
 
 const ExcluirContato = () => {
+  const { handleIsPopUpActive, handlePopUpType } = useContext(PopUpContext)
+
+  const handleCancelar = () => {
+    handleIsPopUpActive(false)
+    handlePopUpType('')
+  }
+
   return (
     <div className={styles.container}>
       <h1>
@@ -22,7 +30,7 @@ const ExcluirContato = () => {
         </div>
       </form>
       <div className={styles.content_buttons}>
-        <button>
+        <button onClick={handleCancelar}>
           Cancelar
         </button>
         <button>
