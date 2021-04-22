@@ -52,12 +52,12 @@
   filter: brightness(1.05);
 }
 
-.button_criar_contato img {
+.button_criar_contato > img {
   width: 16px;
   margin-right: 8px;
 }
 
-.button_criar_contato span {
+.button_criar_contato > span {
   font-weight: 500;
   font-size: 0.85rem;
   color: #fa7268;
