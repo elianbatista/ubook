@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '../styles/components/NovoContato.module.css'
 
-const NovoContato = () => {
+const ExcluirContato = () => {
   return (
     <div className={styles.container}>
       <h1>
@@ -33,4 +33,4 @@ const NovoContato = () => {
   )
 }
 
-export default NovoContato
+export default ExcluirContato
