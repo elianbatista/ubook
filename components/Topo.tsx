@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { PopUpContext } from '../contexts/PopupContext'
 import styles from '../styles/components/Topo.module.css'
 
 const Topo = () => {
+  const { handleIsPopUpActive, handlePopUpType } = useContext(PopUpContext)
+
+  const handlePopUpNovoContato = () => {
+    handleIsPopUpActive(true)
+    handlePopUpType('NovoContato')
+  }
+
   return (
     <header className={styles.header}>
       <img 
@@ -10,7 +18,10 @@ const Topo = () => {
         className={styles.logo}
       />
       <nav className={styles.nav}>
-        <button className={styles.button_criar_contato}>
+        <button 
+          className={styles.button_criar_contato}
+          onClick={handlePopUpNovoContato}
+        >
           <img src="/img/icons/plus.svg" />
           <span>
             Criar contato
