@@ -68,3 +68,7 @@
   padding: 8px 16px;
   border-radius: 16px;
 }
+
+.content_buttons > button:last-child:disabled {
+  opacity: 0.32;
+}

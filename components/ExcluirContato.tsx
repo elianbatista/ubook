@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
-import { PopUpContext } from '../contexts/PopupContext'
+import { ContatoContext } from '../contexts/ContatoContext'
+import { PopUpContext } from '../contexts/PopUpContext'
 import styles from '../styles/components/ExcluirContato.module.css'
 
 const NovoContato = () => {
-  const { handleIsPopUpActive, handlePopUpType } = useContext(PopUpContext)
+  const { handleConfirmDelete } = useContext(ContatoContext)
+  const { handlePopUpType } = useContext(PopUpContext)
 
   const handleCancelar = () => {
-    handleIsPopUpActive(false)
     handlePopUpType('')
   }
   
@@ -22,7 +23,7 @@ const NovoContato = () => {
         <button onClick={handleCancelar}>
           Cancelar
         </button>
-        <button>
+        <button onClick={handleConfirmDelete}>
           Excluir
         </button>
       </div>

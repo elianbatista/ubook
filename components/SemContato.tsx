@@ -1,12 +1,11 @@
 import React, { useContext } from 'react'
-import { PopUpContext } from '../contexts/PopupContext'
+import { PopUpContext } from '../contexts/PopUpContext'
 import styles from '../styles/components/SemContato.module.css'
 
 const SemContato = () => {
-  const { handleIsPopUpActive, handlePopUpType } = useContext(PopUpContext)
+  const { handlePopUpType } = useContext(PopUpContext)
 
   const handleCriarContato = () => {
-    handleIsPopUpActive(true)
     handlePopUpType('NovoContato')
   }
   

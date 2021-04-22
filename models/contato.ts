@@ -3,6 +3,7 @@ export interface ContatoModel {
   nome: string
   email: string
   telefone: string
+  initial: string
 }
 
-export type Contato = Omit<ContatoModel, 'id'>
+export type Contato = Omit<ContatoModel, 'id' | 'initial'>

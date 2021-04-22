@@ -1,12 +1,11 @@
 import React, { useContext } from 'react'
-import { PopUpContext } from '../contexts/PopupContext'
+import { PopUpContext } from '../contexts/PopUpContext'
 import styles from '../styles/components/Topo.module.css'
 
 const Topo = () => {
-  const { handleIsPopUpActive, handlePopUpType } = useContext(PopUpContext)
+  const { handlePopUpType } = useContext(PopUpContext)
 
   const handlePopUpNovoContato = () => {
-    handleIsPopUpActive(true)
     handlePopUpType('NovoContato')
   }
 
