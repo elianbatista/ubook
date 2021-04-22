@@ -1,13 +1,21 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
+import { ContatoContext } from '../contexts/ContatoContext'
 import { PopUpContext } from '../contexts/PopUpContext'
 import styles from '../styles/components/Topo.module.css'
 
 const Topo = () => {
   const { handlePopUpType } = useContext(PopUpContext)
+  const { handleBuscar } = useContext(ContatoContext)
+
+  const [searchField, setSearchField] = useState('')
 
   const handlePopUpNovoContato = () => {
     handlePopUpType('NovoContato')
   }
+
+  useEffect(() => {
+    handleBuscar(searchField)
+  }, [searchField])
 
   return (
     <header className={styles.header}>
@@ -31,6 +39,8 @@ const Topo = () => {
             type="text" 
             placeholder="Buscar..." 
             className={styles.field_search}
+            value={searchField}
+            onChange={(event) => setSearchField(event.target.value)}
           />
           <img src="/img/icons/search.svg" />
         </div>

@@ -18,6 +18,7 @@ interface ContatoContextData {
   handleUpdateContato: (id: string) => void
   handleConfirmUpdate: (contato: ContatoModel) => void
   handleCriarContato: (contato: Contato) => void
+  handleBuscar: (value: string) => void
 }
 
 interface ContatoProviderProps {
@@ -31,9 +32,15 @@ export function ContatoProvider({ children }: ContatoProviderProps) {
   const [deleteId, setDeleteId] = useState('')
   const [contatos, setContatos] = useState([])
 
+  const handleSetContatos = (contatos: ContatoModel[]) => {
+    setContatos(contatos.sort((a, b) => {
+      return a.nome < b.nome ? -1 : a.nome > b.nome ? 1 : 0
+    }))
+  }
+  
   const handleCriarContato = (contato: Contato) => {
     const newContatos = AddContato(contato)
-    setContatos(newContatos)
+    handleSetContatos(newContatos)
     handlePopUpType('')
   }
 
@@ -44,9 +51,20 @@ export function ContatoProvider({ children }: ContatoProviderProps) {
 
   const handleConfirmDelete = () => {
     const newContatos = DeleteContato(deleteId)
-    setContatos(newContatos)
+    handleSetContatos(newContatos)
     setDeleteId('')
     handlePopUpType('')
+  }
+
+  const handleBuscar = (value: string) => {
+    const listContatos = ListContato()
+    const search = listContatos.filter((contato) => {
+      const resultado = contato.nome.toUpperCase().indexOf(value.toUpperCase())
+      if (resultado >= 0) {
+        return contato
+      }
+    })
+    handleSetContatos(search)
   }
 
   const handleUpdateContato = (id: string) => {
@@ -59,7 +77,7 @@ export function ContatoProvider({ children }: ContatoProviderProps) {
 
   useEffect(() => {
     const listContatos = ListContato()
-    setContatos(listContatos)
+    handleSetContatos(listContatos)
   }, [])
 
   return (
@@ -70,7 +88,8 @@ export function ContatoProvider({ children }: ContatoProviderProps) {
         handleConfirmDelete,
         handleUpdateContato,
         handleConfirmUpdate,
-        handleCriarContato
+        handleCriarContato,
+        handleBuscar
       }}
     >
       { children }

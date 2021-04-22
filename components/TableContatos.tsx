@@ -40,7 +40,7 @@ const TableContatos = ({ contatos }: TableContatosProps) => {
                 <tr key={contato.id} className={styles.row}>
                   <td className={styles.initial}>
                     <span>
-                      E
+                      {contato.initial}
                     </span>
                   </td>
                   <td>
