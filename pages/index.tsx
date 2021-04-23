@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import Head from 'next/head'
 import styles from '../styles/pages/Home.module.css'
 
 import Topo from '../components/Topo'
@@ -12,6 +13,9 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>uBook - Elian Batista</title>
+      </Head>
       <PopUpManagament />
       <Topo buttonAddContato={contatos.length === 0 ? false : true} />
       {
