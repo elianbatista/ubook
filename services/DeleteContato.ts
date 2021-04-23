@@ -5,7 +5,7 @@ export const DeleteContato = (id: string): ContatoModel[] => {
   const contatos = ListContato()
   let indexDelete
   contatos.forEach((value, index) => {
-    if(value.id === id) {
+    if (value.id === id) {
       indexDelete = index
     }
   })

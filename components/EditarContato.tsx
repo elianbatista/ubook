@@ -3,10 +3,11 @@ import { ContatoContext } from '../contexts/ContatoContext'
 import { PopUpContext } from '../contexts/PopUpContext'
 import styles from '../styles/components/NovoContato.module.css'
 import MaskedInput from 'react-text-mask'
+import { FindContato } from '../services/FindContato'
 
-const NovoContato = () => {
+const EditarContato = () => {
   const { handlePopUpType } = useContext(PopUpContext)
-  const { handleCriarContato } = useContext(ContatoContext)
+  const { handleConfirmUpdate, updateId } = useContext(ContatoContext)
 
   const [nome, setNome] = useState('')
   const [email, setEmail] = useState('')
@@ -18,12 +19,19 @@ const NovoContato = () => {
   }
 
   const handleSubmit = () => {
-    handleCriarContato({
+    handleConfirmUpdate({
       nome,
       email,
       telefone
     })
   }
+
+  useEffect(() => {
+    const contato = FindContato(updateId)
+    setNome(contato.nome)
+    setEmail(contato.email)
+    setTelefone(contato.telefone)
+  }, [])
 
   useEffect(() => {
     if((nome != '') || (email != '') || (telefone != '')) {
@@ -86,4 +94,4 @@ const NovoContato = () => {
   )
 }
 
-export default NovoContato
+export default EditarContato

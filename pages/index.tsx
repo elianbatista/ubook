@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <PopUpManagament />
-      <Topo />
+      <Topo buttonAddContato={contatos.length === 0 ? false : true} />
       {
         contatos.length === 0 ?
           <SemContato /> : <TableContatos contatos={contatos} />

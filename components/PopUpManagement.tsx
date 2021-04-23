@@ -3,6 +3,8 @@ import styles from '../styles/components/PopUpManagement.module.css'
 
 import NovoContato from './NovoContato'
 import ExcluirContato from './ExcluirContato'
+import EditarContato from './EditarContato'
+
 import { PopUpContext } from '../contexts/PopUpContext'
 
 const PopUpManagement = () => {
@@ -20,6 +22,8 @@ const PopUpManagement = () => {
           <ExcluirContato /> :
         popUpType === 'NovoContato' ? 
           <NovoContato /> :
+        popUpType === 'EditarContato' ?
+          <EditarContato /> :
         ''
       }
     </div>

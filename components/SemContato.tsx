@@ -15,9 +15,12 @@ const SemContato = () => {
       <p>
         Nenhum contato foi criado ainda.
       </p>
-      <button className={styles.button_criar_contato}>
+      <button 
+        className={styles.button_criar_contato} 
+        onClick={handleCriarContato}
+      >
           <img src="/img/icons/plus.svg" />
-          <span onClick={handleCriarContato}>
+          <span>
             Criar contato
           </span>
         </button>

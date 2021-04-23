@@ -3,7 +3,11 @@ import { ContatoContext } from '../contexts/ContatoContext'
 import { PopUpContext } from '../contexts/PopUpContext'
 import styles from '../styles/components/Topo.module.css'
 
-const Topo = () => {
+interface TopoProps {
+  buttonAddContato: boolean
+}
+
+const Topo = ({ buttonAddContato }: TopoProps) => {
   const { handlePopUpType } = useContext(PopUpContext)
   const { handleBuscar } = useContext(ContatoContext)
 
@@ -25,15 +29,18 @@ const Topo = () => {
         className={styles.logo}
       />
       <nav className={styles.nav}>
-        <button 
-          className={styles.button_criar_contato}
-          onClick={handlePopUpNovoContato}
-        >
-          <img src="/img/icons/plus.svg" />
-          <span>
-            Criar contato
-          </span>
-        </button>
+        {
+          buttonAddContato ?
+          <button 
+            className={styles.button_criar_contato}
+            onClick={handlePopUpNovoContato}
+          >
+            <img src="/img/icons/plus.svg" />
+            <span>
+              Criar contato
+            </span>
+          </button> : ''
+        }
         <div className={styles.search}>
           <input 
             type="text" 

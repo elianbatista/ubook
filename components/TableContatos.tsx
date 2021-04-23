@@ -8,7 +8,18 @@ interface TableContatosProps {
 }
 
 const TableContatos = ({ contatos }: TableContatosProps) => {
-  const { handleDeleteContato } = useContext(ContatoContext)
+  const { handleDeleteContato, handleUpdateContato } = useContext(ContatoContext)
+
+  const cores = [
+    '#fa8d68',
+    '#90d26c',
+    '#68a0fa',
+    '#fab668',
+    '#8368fa',
+    '#fa68b5',
+    '#5fe2c4',
+    '#f55a5a'
+  ]
 
   return (
     <div className={styles.container}>
@@ -35,11 +46,11 @@ const TableContatos = ({ contatos }: TableContatosProps) => {
             </th>
           </tr>
           {
-            contatos.map((contato) => {
+            contatos.map((contato, index) => {
               return (
-                <tr key={contato.id} className={styles.row}>
+                <tr key={contato.id} className={styles.row} style={contato.new ? { backgroundColor: '#fff3f2'} : {} }>
                   <td className={styles.initial}>
-                    <span>
+                    <span style={{backgroundColor: cores[index % cores.length]}}>
                       {contato.initial}
                     </span>
                   </td>
@@ -53,7 +64,7 @@ const TableContatos = ({ contatos }: TableContatosProps) => {
                     {contato.telefone}
                   </td>
                   <td className={styles.icon}>
-                    <img src="/img/icons/edit.svg" />
+                    <img src="/img/icons/edit.svg" onClick={() => handleUpdateContato(contato.id)} />
                   </td>
                   <td className={styles.icon} onClick={() => handleDeleteContato(contato.id)}>
                     <img src="/img/icons/delete.svg" />

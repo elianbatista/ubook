@@ -1,5 +1,8 @@
 .container {
+  flex: 1;
   padding: 16px;
+  overflow-y: scroll;
+  overflow-x: visible;
 }
 
 .table {
